@@ -8,6 +8,7 @@ Perform the following steps:
 1. Download and install [Node.js](https://nodejs.org/en/).
 1. Download and install [Visual Studio Code(VS Code)](https://code.visualstudio.com/).
 1. Install [vetur](https://github.com/vuejs/vetur) extension for VS Code.
+1. Clone this repository.
 1. Download and install npm packages.
     ```bash
     npm install
@@ -15,7 +16,6 @@ Perform the following steps:
 
 ## Starting Server
 Perform the following steps:
-1. Clone this repository.
 1. Perform [rails-webapp-sample](https://github.com/ybkuroki/rails-webapp-sample) project.
 1. Start the development server.
     ```bash
