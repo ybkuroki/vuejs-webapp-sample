@@ -45,7 +45,7 @@ npm run build
 The follwing figure is the map of this sample project.
 
 ```
-- vuejs-managesys
+- vuejs-webapp-sample
   + public          … Contains resouces of this project.
   - src
     + assets        … Contains source codes that Webpack doesn't need to build.
