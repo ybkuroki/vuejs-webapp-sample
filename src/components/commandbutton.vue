@@ -1,5 +1,5 @@
 <template>
-    <div v-if="useDiv" class="ui button" :class="className" @click="onClick">
+    <div v-if="useDiv" class="ui button" :class="[isLoading ? 'loading' : '', className]" @click="onClick">
         <slot>{{ name }}</slot>
     </div>
     <button v-else class="ui button" :class="[isLoading ? 'loading' : '', className]" @click="onClick">
