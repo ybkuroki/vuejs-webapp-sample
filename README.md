@@ -1,7 +1,7 @@
 # vuejs-webapp-sample
 
 ## Preface
-This sample project uses [Vue.js](https://vuejs.org/index.html) and [Semantic UI](https://semantic-ui.com/). It provides only Web UI. So, I recommend using the [rails-webapp-sample](https://github.com/ybkuroki/rails-webapp-sample) project as Back End Application.
+This sample project uses [Vue.js](https://vuejs.org/index.html) and [Semantic UI](https://semantic-ui.com/). It provides only Web UI. So, I recommend using the [springboot-webapp-sample](https://github.com/ybkuroki/springboot-webapp-sample) project as Back End Application.
 
 ## Install
 Perform the following steps:
