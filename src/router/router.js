@@ -7,14 +7,15 @@ import Login from '../views/login.vue'
 import Top from '../views/top.vue'
 
 var router = new Router({
-    base: '/',
-    routes: [
-        {path: '/login', component: Login, meta: {anonymous: true}},
-        {path: '/top', component: Top},
-        {path: '/*', redirect: '/top'}
-    ]
+  base: '/',
+  routes: [
+    {path: '/login', component: Login, meta: {anonymous: true}},
+    {path: '/top', component: Top},
+    {path: '/*', redirect: '/top'}
+  ]
 })
 
+// SPA ルーティング前のログインチェック差込
 router.beforeEach((to, from, next) => {
   if (to.matched.some(m => m.meta.anonymous)) {
     next()

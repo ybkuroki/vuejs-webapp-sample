@@ -1,5 +1,5 @@
 {
-  "name": "vuejs-webapp-sample",
+  "name": "vuejs-managesys",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,15 +10,15 @@
   "dependencies": {
     "cookie": "^0.3.1",
     "semantic-ui-css": "^2.4.1",
-    "superagent": "^5.0.2",
+    "superagent": "^5.1.0",
     "vue": "^2.6.10",
-    "vue-router": "^3.0.2",
+    "vue-router": "^3.1.3",
     "vuex": "^3.1.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.5.3",
-    "@vue/cli-plugin-eslint": "^3.5.1",
-    "@vue/cli-service": "^3.5.3",
+    "@vue/cli-plugin-babel": "^3.12.1",
+    "@vue/cli-plugin-eslint": "^3.12.1",
+    "@vue/cli-service": "^3.12.1",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
