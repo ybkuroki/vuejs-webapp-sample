@@ -79,15 +79,15 @@ export default {
     bookRegist() {
       var self = this;
       this.isLoading = true
-      var newBook = new Object();
-    
-      newBook.title = this.title;
-      newBook.isbn = this.isbn;
-      newBook.category = {id: this.category, name: '****'}
-      newBook.format = {id: this.format, name: '****'}
+      var book = {
+        title: this.title,
+        isbn: this.isbn,
+        categoryId: this.category,
+        formatId: this.format
+      }
 
       Ajax.post('/api/book/new',
-        JSON.stringify(newBook),
+        JSON.stringify(book),
         () => {
           this.isLoading = false
           self.success()

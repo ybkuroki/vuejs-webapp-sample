@@ -69,14 +69,14 @@ export default {
     },
     bookEdit() {
       this.isLoading = true
-      var book = new Object();
-    
-      book.id = this.book.id;
-      book.title = this.book.title;
-      book.isbn = this.book.isbn;
-      book.category = {id: this.category, name: '****'}
-      book.format = {id: this.format, name: '****'}
-      
+      var book = {
+        id: this.book.id,
+        title: this.book.title,
+        isbn: this.book.isbn,
+        categoryId: this.category,
+        formatId: this.format
+      }
+
       var self = this;
       Ajax.post('/api/book/edit',
         JSON.stringify(book),

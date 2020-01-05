@@ -23,13 +23,20 @@ export default {
   },
   methods: {
     bookDelete() {
-      var self = this;
-      Ajax.post('/api/book/delete',
-        JSON.stringify(self.book),
-        () => {},
-        () => {})
+      var book = {
+        id: this.book.id,
+        title: this.book.title,
+        isbn: this.book.isbn,
+        categoryId: this.book.category.id,
+        formatId: this.book.format.id
+      }
 
-      location.href='/'
+      Ajax.post('/api/book/delete',
+        JSON.stringify(book),
+        () => {
+          location.href='/'
+        },
+        () => {})
     }
   }
 }
