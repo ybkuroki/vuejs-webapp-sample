@@ -35,6 +35,8 @@ Perform the following steps:
 1. Access the follwing URL in the Chrome.  
 [http://localhost:3000](http://localhost:3000)
 
+1. Login userName and Password is ``test``.
+
 ## Creating a Production Build
 Perform the following command:
 ```bash
