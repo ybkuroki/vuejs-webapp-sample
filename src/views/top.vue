@@ -22,7 +22,7 @@
     <div class="main ui container">
       <Search @search="searchBook" :isLoading="isLoading" />
       <BookList ref="bookList" :books="books" :totalPages="totalPages" @clickPage="getBookList" />
-      <Regist v-model="showModal" />
+      <Regist v-model="showModal" @refresh="refreshData" />
     </div>
   </div>
 </template>
@@ -40,6 +40,7 @@ export default {
     return {
       books: [],
       query: '',
+      currentPage: 1,
       totalPages: 1,
       uri: '',
       userName: 'user',
@@ -51,8 +52,8 @@ export default {
     searchBook(keyword) {
       this.isLoading = true
       this.uri = '/api/book/search?query=' + keyword
-      this.getBookList(1)
-      if (this.totalPages > 0) this.$refs.bookList.$refs.pagination.setPage(0)
+      this.currentPage = 1
+      this.refreshData()
       this.isLoading = false
     },
     getBookList(page) {
@@ -62,9 +63,14 @@ export default {
         (body) => {
           self.books = body.content
           self.totalPages = body.totalPages
+          self.currentPage = page
         },
         () => {
         })
+    },
+    refreshData() {
+      this.getBookList(this.currentPage)
+      if (this.totalPages > 0) this.$refs.bookList.$refs.pagination.setPage(this.currentPage - 1)
     },
     clickRegist() {
       this.showModal = true;
@@ -77,7 +83,7 @@ export default {
         {},
         () => {
           this.$router.push("/login")
-          location.href = '/'
+          Ajax.get("/api/account/loginStatus",{},{},{})
         },
         () => {
         })

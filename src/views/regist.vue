@@ -9,8 +9,8 @@
         <div class="ui form">
           <InputBox v-model="title" title="書籍タイトル" :isValide="errors.hasOwnProperty('title')" />
           <InputBox v-model="isbn" title="ISBN" :isValide="errors.hasOwnProperty('isbn')" />
-          <SelectBox v-model="category" title="カテゴリ" :options="categories" />
-          <SelectBox v-model="format" title="形式" :options="formats" />
+          <SelectBox ref="category" v-model="category" title="カテゴリ" :options="categories" />
+          <SelectBox ref="format" v-model="format" title="形式" :options="formats" />
         </div>
       </template>
       <template slot="footer">
@@ -65,14 +65,16 @@ export default {
   methods: {
     success() {
       this.initilize()
-      location.href='/'
+      this.$emit('refresh')
     },
     initilize() {
       this.errors = '';
       this.title = '';
       this.isbn = '';
       this.category = 1;
+      this.$refs.category.selectedValue = this.categories.find((option) => option.id == this.category).name
       this.format = 1;
+      this.$refs.format.selectedValue = this.formats.find((option) => option.id == this.format).name
       
       this.$emit('changed', false)
     },
