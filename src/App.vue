@@ -1,11 +1,14 @@
 <template>
-  <router-view></router-view>
+  <div id="app" class="page-container">
+    <router-view/>
+  </div>
 </template>
 
 <script>
-import Ajax from "./lib/ajax.js";
+import Ajax from "@/ajax/ajax.js"
 
 export default {
+  name: 'App',
   data() {
     return {
       login: false
@@ -28,5 +31,5 @@ export default {
       );
     }
   }
-};
+}
 </script>

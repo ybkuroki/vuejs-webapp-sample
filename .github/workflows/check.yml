@@ -1,0 +1,18 @@
+name: check
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  check:
+    name: check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: eslint review
+        uses: reviewdog/action-eslint@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          eslint_flags: 'src/**/*.{vue,js}'

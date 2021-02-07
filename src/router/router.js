@@ -1,21 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Login from '../views/Login.vue'
+import Home from '../views/Home.vue'
+import About from '../views/About.vue'
 
 Vue.use(Router)
 
-import Login from '../views/login.vue'
-import Top from '../views/top.vue'
-
 var router = new Router({
-  base: '/',
+  mode: 'history',
+  base: process.env.BASE_URL,
   routes: [
-    {path: '/login', component: Login, meta: {anonymous: true}},
-    {path: '/top', component: Top},
-    {path: '/*', redirect: '/top'}
+    { path: '/login', component: Login, meta: { anonymous: true } },
+    { path: '/home', name: 'home', component: Home },
+    { path: '/about', name: 'about', component: About },
+    { path: '/*', redirect: '/home' }
   ]
 })
 
-// SPA ルーティング前のログインチェック差込
 router.beforeEach((to, from, next) => {
   if (to.matched.some(m => m.meta.anonymous)) {
     next()

@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import Ajax from '../lib/ajax.js'
+import Ajax from '../ajax/ajax.js'
 import * as types from './mutation-types.js'
 
 Vue.use(Vuex)
 
 const state = {category: [], format: []}
 
-// コンポーネントからdispatch()により、actionが呼ばれる。
-// Ajax通信を行い、commit()により、mutationsを呼び出す。
+// It's performed action when it calls dispatch() method in components.
+// Action calls Web API using ajax. It's executed mutations when calls commit() method.
 const actions = {
   [types.GET_CATEGORY] ({ commit }) {
     Ajax.get('/api/master/category',
@@ -27,7 +27,7 @@ const actions = {
   }
 }
 
-// 更新されたstateを取得する。
+// Get the state which is updated.
 const getters = {
   getCategory(state) {
      return state.category
@@ -37,7 +37,7 @@ const getters = {
   }
 }
 
-// mutationsは、自身のstateを更新する。
+// mutations updates own state.
 const mutations = {
   [types.GET_CATEGORY] (state, category) {
     state.category = category

@@ -1,7 +1,11 @@
 # vuejs-webapp-sample
 
+[![license](https://img.shields.io/github/license/ybkuroki/vuejs-webapp-sample?style=for-the-badge)](https://github.com/ybkuroki/vuejs-webapp-sample/blob/master/LICENSE)
+[![workflow](https://img.shields.io/github/workflow/status/ybkuroki/vuejs-webapp-sample/check?label=check&style=for-the-badge&logo=github)](https://github.com/ybkuroki/vuejs-webapp-sample/actions?query=workflow%3Acheck)
+[![release](https://img.shields.io/github/release/ybkuroki/vuejs-webapp-sample?style=for-the-badge&logo=github)](https://github.com/ybkuroki/vuejs-webapp-sample/releases)
+
 ## Preface
-This sample project uses [Vue.js](https://vuejs.org/index.html) and [Semantic UI](https://semantic-ui.com/). It provides only Web UI. So, I recommend using the [springboot-webapp-sample](https://github.com/ybkuroki/springboot-webapp-sample) project as Back End Application.
+This sample project uses [Vue.js](https://vuejs.org/index.html) and [Vue Material](https://vuematerial.io/). It provides only Web UI. So, I recommend using the [golang-webapp-sample](https://github.com/ybkuroki/golang-webapp-sample) project as Back End Application.
 
 ## Install
 Perform the following steps:
@@ -16,7 +20,7 @@ Perform the following steps:
 
 ## Starting Server
 Perform the following steps:
-1. Perform [rails-webapp-sample](https://github.com/ybkuroki/rails-webapp-sample) project.
+1. Perform [golang-webapp-sample](https://github.com/ybkuroki/golang-webapp-sample) project.
 1. Start the development server.
     ```bash
     npm run serve
@@ -50,12 +54,11 @@ The follwing figure is the map of this sample project.
   - src
     + assets        … Contains source codes that Webpack doesn't need to build.
     + components    … Contains components of Vue.
-    + lib           … Implement the common library for Ajax.
-    + model         … Define View Models.
+    + ajax          … Implement the common library for Ajax.
     + router        … Define Vue Router.
     + store         … Define Vuex
     + views         … Define views of this project.
-    - app.vue       … Define a base view of this project.
+    - App.vue       … Define a base view of this project.
     - main.js       … Entry point.
   - babel.config    … Babel Configuration.
   - package.json    … Define npm packages.
@@ -67,39 +70,24 @@ There are the following views in this sample.
 
 |View Name|File Name|Description|
 |:---|:---|:---|
-|Login View|``login.vue``|The view for session authentication with username and password.|
-|Top View|``top.vue``|The view showing search results.|
-|Regist View(Modal)|``regist.vue``|The view to register a new book data.|
-|Edit View(Modal)|``edit.vue``|The view to edit a book data.|
-|Detail View(Modal)|``detail.vue``|The view for showing a book data.|
-
-## Components
-There are the following components in this sample.
-
-|Component Name|File Name|Description|
-|:---|:---|:---|
-|Button|``commandbutton.vue``|The component that shows a button|
-|Input|``inputbox.vue``|The component that shows a item name and input box.|
-|Label|``labelgroup.vue``|The component that shows a item name and data.|
-|Message|``message.vue``|The component that shows messages.|
-|Modal|``modal.vue``|The component that shows a modal dialog.|
-|Navigation Bar|``navbar.vue``|The component that shows a navigation bar.|
-|Pagenation|``paginate.vue``|The component that shows a pagenation.|
-|Select Box|``selectbox.vue``|The component that shows a select box.|
-
-The pagination component refer to [this project](https://github.com/lokyoung/vuejs-paginate/blob/master/src/components/Paginate.vue).
+|Login View|``Login.vue``|The view for session authentication with username and password. This view is created and based on [the example of vue-material](https://github.com/vuematerial/examples).|
+|Home View|``Home.vue``|The view showing search results.|
+|About View|``About.vue``|The view showing this application information.|
 
 ## Libraries
 This sample uses the following library.
 
 |Library Name|Version|Description|
 |:---|:---:|:---|
-|vue-cli|3.5.3|The tool for Vue.js Development.|
-|Vue.js|2.6.10|JavaScript Framework|
-|Vue Router|3.0.2|Library for Routing.|
-|Vuex|3.1.0|Flux library for Vue.js|
-|superagent|5.0.2|library for Ajax.|
-|semantic-ui-css|2.4.1|CSS Framework|
+|vue-cli|4.5.9|The tool for Vue.js Development.|
+|Vue.js|2.6.12|JavaScript Framework|
+|Vue Router|3.4.9|Library for Routing.|
+|Vuex|3.6.0|Flux library for Vue.js|
+|superagent|6.1.0|library for Ajax.|
+|vue-material|1.0.0-beta-14|CSS Framework|
+
+## Contribution
+Please read CONTRIBUTING.md for proposing new functions, reporting bugs and submitting pull requests before contributing to this repository.
 
 ## License
 The License of this sample is *MIT License*.
