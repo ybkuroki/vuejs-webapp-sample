@@ -1,0 +1,21 @@
+name: release
+on:
+  push:
+    tags:
+    - "v[0-9]+.[0-9]+.[0-9]+"
+jobs:
+  Release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 50
+    - uses: notlmn/release-with-changelog@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        exclude: '^polish|^bump|^typo'
+        commit-template: '- {hash} {title}'
+        template: |
+          ### Changelog
+
+          {commits}
