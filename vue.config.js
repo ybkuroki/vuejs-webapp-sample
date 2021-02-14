@@ -2,14 +2,6 @@ module.exports = {
   devServer: {
     port: 3000
   },
-  configureWebpack: {
-    resolve: {
-      extensions: ['.js'],
-      alias: {
-        'vue$': 'vue/dist/vue.esm.js',
-      }
-    }
-  },
   productionSourceMap: false,
   pwa: {
     workboxPluginMode: 'GenerateSW',
@@ -20,7 +12,7 @@ module.exports = {
       runtimeCaching: [
         {
           urlPattern: new RegExp('/api/*'),
-          handler: 'networkFirst',
+          handler: 'NetworkFirst',
           options: {
             cacheName: 'api',
             expiration: {
