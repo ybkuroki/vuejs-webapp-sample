@@ -7,7 +7,6 @@ import About from '../views/About.vue'
 Vue.use(Router)
 
 var router = new Router({
-  mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     { path: '/login', component: Login, meta: { anonymous: true } },
