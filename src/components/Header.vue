@@ -11,7 +11,7 @@
 
         <div class="md-toolbar-section-end">
           <md-button class="md-icon-button" @click="clickGithub">
-            <md-icon class="fab fa-github"></md-icon>
+            <md-icon><font-awesome-icon :icon="['fab', 'github']" /></md-icon>
           </md-button>
           <slot name="header-content-end">
           </slot>
@@ -34,7 +34,7 @@
         </md-list-item>
 
         <md-list-item @click="clickGithub">
-          <md-icon class="fab fa-github"></md-icon>
+          <md-icon><font-awesome-icon :icon="['fab', 'github']" /></md-icon>
           <span class="md-list-item-text">GitHub</span>
         </md-list-item>
       </md-list>

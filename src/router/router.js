@@ -7,7 +7,6 @@ import About from '../views/About.vue'
 Vue.use(Router)
 
 var router = new Router({
-  mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     { path: '/login', component: Login, meta: { anonymous: true } },
@@ -21,7 +20,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(m => m.meta.anonymous)) {
     next()
   } else {
-    Vue.nextTick(() => router.app.$refs.app.checkLogin(to, from, next))
+    Vue.nextTick(() => router.app.$children[0].checkLogin(to, from, next))
   }
 })
 export default router

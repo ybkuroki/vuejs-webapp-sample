@@ -36,7 +36,7 @@ Perform the following steps:
     Note that the development build is not optimized.
     To create a production build, run npm run build.
     ```
-1. Access the follwing URL in the Chrome.  
+1. Access the following URL in the Chrome.  
 [http://localhost:3000](http://localhost:3000)
 
 ## Creating a Production Build
@@ -46,7 +46,7 @@ npm run build
 ```
 
 ## Project Map
-The follwing figure is the map of this sample project.
+The following figure is the map of this sample project.
 
 ```
 - vuejs-webapp-sample

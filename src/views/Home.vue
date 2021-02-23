@@ -16,7 +16,7 @@
       <template slot="header-content-end">
         <label>{{ userName }}</label>
         <md-button class="md-icon-button" @click="logout">
-          <md-icon class="fas fa-sign-out-alt"></md-icon>
+          <md-icon><font-awesome-icon :icon="['fas', 'sign-out-alt']" /></md-icon>
         </md-button>
       </template>
       
