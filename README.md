@@ -79,10 +79,10 @@ This sample uses the following library.
 
 |Library Name|Version|Description|
 |:---|:---:|:---|
-|vue-cli|4.5.9|The tool for Vue.js Development.|
+|vue-cli|4.5.11|The tool for Vue.js Development.|
 |Vue.js|2.6.12|JavaScript Framework|
-|Vue Router|3.4.9|Library for Routing.|
-|Vuex|3.6.0|Flux library for Vue.js|
+|Vue Router|3.5.1|Library for Routing.|
+|Vuex|3.6.2|Flux library for Vue.js|
 |superagent|6.1.0|library for Ajax.|
 |vue-material|1.0.0-beta-14|CSS Framework|
 
