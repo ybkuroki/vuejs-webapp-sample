@@ -12,13 +12,6 @@
           <md-icon>search</md-icon>
         </md-button>
       </template>
-
-      <template slot="header-content-end">
-        <label>{{ userName }}</label>
-        <md-button class="md-icon-button" @click="logout">
-          <md-icon><font-awesome-icon :icon="['fas', 'sign-out-alt']" /></md-icon>
-        </md-button>
-      </template>
       
       <template slot="app-content">
         <CreateCard v-if="isCreate" @cancel="createCancel" />
@@ -63,7 +56,6 @@ export default {
     books: [],
     query: '',
     uri: '',
-    userName: 'user',
     keyword: '',
     contents: [],
     isLoading: false,
@@ -77,13 +69,6 @@ export default {
   created() {
     this.uri = '/api/book/list'
     this.getBookList()
-    
-    var self = this;
-    Ajax.get('/api/account/loginAccount',
-      {},
-      (body) => {
-        self.userName = body.name
-      })
     
     this.$store.dispatch(types.GET_CATEGORY)
     this.$store.dispatch(types.GET_FORMAT)
@@ -107,21 +92,11 @@ export default {
     },
     create() {
       this.isCreate = true
-      document.querySelector('.md-scrollbar').scrollTop = 0
+      document.querySelector('.md-app-scroller').scrollTop = 0
     },
     createCancel() {
       this.isCreate = false
       this.getBookList()
-    },
-    logout() {
-      Ajax.post('/api/account/logout',
-        {},
-        () => {
-          this.$router.push("/login")
-          Ajax.get("/api/account/loginStatus",{},{},{})
-        },
-        () => {
-        })
     }
   }
 }
