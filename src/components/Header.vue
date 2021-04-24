@@ -1,5 +1,5 @@
 <template>
-  <md-app md-mode="reveal">
+  <md-app md-waterfall md-mode="fixed">
     <md-app-toolbar class="md-primary">
       <div class="md-toolbar-row">
         <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
@@ -13,8 +13,10 @@
           <md-button class="md-icon-button" @click="clickGithub">
             <md-icon><font-awesome-icon :icon="['fab', 'github']" /></md-icon>
           </md-button>
-          <slot name="header-content-end">
-          </slot>
+          <label v-if="userName != ''">{{ userName }}</label>
+          <md-button class="md-icon-button" @click="logout">
+            <md-icon><font-awesome-icon :icon="['fas', 'sign-out-alt']" /></md-icon>
+          </md-button>
         </div>
       </div>
     </md-app-toolbar>
@@ -48,13 +50,23 @@
 </template>
 
 <script>
+import Ajax from "@/ajax/ajax.js"
 import { AppInfo } from '@/const.js'
 
 export default {
   name: 'Header',
   data: () => ({
-    menuVisible: false
+    menuVisible: false,
+    userName: ''
   }),
+  created() {
+    var self = this;
+    Ajax.get('/api/account/loginAccount',
+      {},
+      (body) => {
+        self.userName = body.name
+      })
+  },
   methods: {
     clickHome() {
       this.$router.push('home')
@@ -64,6 +76,15 @@ export default {
     },
     clickGithub() {
       window.open(AppInfo.GithubLink)
+    },
+    logout() {
+      Ajax.post('/api/account/logout',
+        {},
+        () => {
+          this.$router.push("/login")
+        },
+        () => {
+        })
     }
   },
 }
