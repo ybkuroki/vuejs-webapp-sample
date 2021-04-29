@@ -107,12 +107,12 @@ export default {
 
         var self = this;
         Ajax.post('/api/book/edit',
-          JSON.stringify(book),
+          book,
           () => {
             self.cancel()
           },
-          (body) => {
-            self.errors = body
+          (err) => {
+            self.errors = err.response.data
           })
       } else {
         this.getBook()
@@ -130,7 +130,7 @@ export default {
 
       var self = this;
       Ajax.post('/api/book/delete',
-        JSON.stringify(book),
+        book,
         () => {
           self.cancel()
         },

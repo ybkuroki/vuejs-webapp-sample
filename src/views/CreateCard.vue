@@ -73,14 +73,14 @@ export default {
       }
 
       Ajax.post('/api/book/new',
-        JSON.stringify(book),
+        book,
         () => {
           this.isLoading = false
           self.cancel()
         },
-        (body) => {
+        (err) => {
           this.isLoading = false
-          self.errors = body
+          self.errors = err.response.data
         })
     },
     cancel() {

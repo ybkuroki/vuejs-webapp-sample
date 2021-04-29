@@ -1,49 +1,55 @@
-import request from 'superagent'
+import axios from 'axios'
+
+axios.defaults.withCredentials = true
 
 export default class Ajax {
 
   static get(url, data = {}, success, failure) {
-    request
-      .get(this.requestUrl(url))
-      .withCredentials()
-      .query(data)
-      .end((err, res) => {
-        if(res && res.ok) {
-          success(res.body)
-        } else {
-          failure(res.body)
-        }
+    const params = this.createParameter(data)
+    axios
+      .get(this.requestUrl(url), {params: params})
+      .then(res => {
+        if (success) success(res.data)
+      })
+      .catch(err => {
+        if (failure) failure(err)
       })
   }
 
   static post(url, data = {}, success, failure) {
-    request
-      .post(this.requestUrl(url))
-      .withCredentials()
-      .set('Content-Type', 'application/json')
-      .send(data)
-      .end((err, res) => {
-        if (res && res.ok) {
-          success(res.body)
-        } else {
-          failure(res.body)
-        }
+    axios
+      .post(this.requestUrl(url), data)
+      .then(res => {
+        if (success) success(res.data)
+      })
+      .catch(err => {
+        if (failure) failure(err)
       })
   }
   
   static formPost(url, data = {}, success, failure) {
-    request
-      .post(this.requestUrl(url))
-      .withCredentials()
-      .type('form')
-      .send(data)
-      .end((err, res) => {
-        if (res && res.ok) {
-          success(res.body)
-        } else {
-          failure(res.body)
-        }
+    const params = this.createParameter(data)
+    const config = {
+      headers: { "Content-Type": "application/x-www-form-urlencoded" }
+    }
+    axios
+      .post(this.requestUrl(url), params, config)
+      .then(res => {
+        if (success) success(res.data)
       })
+      .catch(err => {
+        if (failure) failure(err)
+      })
+  }
+
+  static createParameter(data = {}) {
+    const params = new URLSearchParams();
+    Object.keys(data).forEach(key => {
+      if (data[key]) {
+        params.append(key, data[key]);
+      }
+    });
+    return params
   }
 
   static requestUrl(url) {
