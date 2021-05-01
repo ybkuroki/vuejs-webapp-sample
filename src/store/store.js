@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import Ajax from '../ajax/ajax.js'
+import Api from '../api/master.js'
 import * as types from './mutation-types.js'
 
 Vue.use(Vuex)
@@ -12,18 +12,10 @@ const state = {category: [], format: []}
 // Action calls Web API using ajax. It's executed mutations when calls commit() method.
 const actions = {
   [types.GET_CATEGORY] ({ commit }) {
-    Ajax.get('/api/master/category',
-      {},
-      (body) => {
-        commit(types.GET_CATEGORY, body)
-      })
+    Api.category((body) => commit(types.GET_CATEGORY, body))
   },
   [types.GET_FORMAT] ({ commit }) {
-    Ajax.get('/api/master/format',
-      {},
-      (body) => {
-        commit(types.GET_FORMAT, body)
-      })
+    Api.format((body) => commit(types.GET_FORMAT, body))
   }
 }
 

@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import Ajax from "@/ajax/ajax.js"
+import Api from "@/api/book.js"
 
 export default {
   name: 'EditCard',
@@ -83,7 +83,7 @@ export default {
   methods: {
     getBook() {
       var self = this;
-      Ajax.get('/api/book/get', 
+      Api.get( 
         {id: self.book.id},
         (body) => {
           self.errors = ''
@@ -91,8 +91,6 @@ export default {
           self.isbn = body.isbn
           self.category = body.category.id
           self.format = body.format.id
-        },
-        () => {
         })
     },
     edit() {
@@ -106,14 +104,8 @@ export default {
         }
 
         var self = this;
-        Ajax.post('/api/book/edit',
-          book,
-          () => {
-            self.cancel()
-          },
-          (err) => {
-            self.errors = err.response.data
-          })
+        Api.edit(book, () => self.cancel(), (err) => self.errors = err.response.data)
+
       } else {
         this.getBook()
         this.isEdit = true
@@ -129,12 +121,7 @@ export default {
       }
 
       var self = this;
-      Ajax.post('/api/book/delete',
-        book,
-        () => {
-          self.cancel()
-        },
-        () => {})
+      Api.delete(book, () => self.cancel())
     },
     cancel() {
       this.isEdit = false

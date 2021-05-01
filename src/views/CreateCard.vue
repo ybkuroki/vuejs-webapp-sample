@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import Ajax from "@/ajax/ajax.js"
+import Api from '@/api/book.js'
 
 export default {
   name: 'CreateCard',
@@ -72,7 +72,7 @@ export default {
         formatId: this.format
       }
 
-      Ajax.post('/api/book/new',
+      Api.create(
         book,
         () => {
           this.isLoading = false

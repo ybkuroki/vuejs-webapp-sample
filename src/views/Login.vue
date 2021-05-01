@@ -36,7 +36,7 @@
 
 <script>
 import { AppInfo } from '@/const.js'
-import Ajax from '@/ajax/ajax.js'
+import Api from '@/api/account.js'
 
 export default {
   name: "Login",
@@ -54,7 +54,7 @@ export default {
     login() {
       this.isLoading = true
       var self = this
-      Ajax.formPost('/api/account/login',
+      Api.login(
         {username: self.user, password: self.password},
         () => {
           this.isLoading = false
