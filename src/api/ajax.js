@@ -1,13 +1,14 @@
 import axios from 'axios'
 
 axios.defaults.withCredentials = true
+axios.defaults.baseURL = process.env.VUE_APP_API_ROOT
 
 export default class Ajax {
 
   static get(url, data = {}, success, failure) {
     const params = this.createParameter(data)
     axios
-      .get(this.requestUrl(url), {params: params})
+      .get(url, {params: params})
       .then(res => {
         if (success) success(res.data)
       })
@@ -18,7 +19,7 @@ export default class Ajax {
 
   static post(url, data = {}, success, failure) {
     axios
-      .post(this.requestUrl(url), data)
+      .post(url, data)
       .then(res => {
         if (success) success(res.data)
       })
@@ -33,7 +34,7 @@ export default class Ajax {
       headers: { "Content-Type": "application/x-www-form-urlencoded" }
     }
     axios
-      .post(this.requestUrl(url), params, config)
+      .post(url, params, config)
       .then(res => {
         if (success) success(res.data)
       })
@@ -50,13 +51,5 @@ export default class Ajax {
       }
     });
     return params
-  }
-
-  static requestUrl(url) {
-    if (process.env.NODE_ENV == 'development') {
-      return 'http://localhost:8080' + url
-    } else {
-      return url
-    }
   }
 }
