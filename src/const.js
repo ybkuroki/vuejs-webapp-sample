@@ -11,7 +11,7 @@ const apiMasterBase = api + "/master"
 const apiAccountBase = api + "/account"
 
 export const ApiBook = {
-  Base: apiBookBase + "/get",
+  Base: apiBookBase,
   List: apiBookBase + "/list",
   Search: apiBookBase + "/search",
   Create: apiBookBase + "/new",
