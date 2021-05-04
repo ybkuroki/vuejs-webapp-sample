@@ -74,7 +74,7 @@ export default {
       window.open(AppInfo.GithubLink)
     },
     logout() {
-      Api.logout(this.$router.push("/login"))
+      Api.logout(() => this.$router.push("/login"))
     }
   },
 }
