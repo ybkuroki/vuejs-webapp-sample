@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Ajax from "@/ajax/ajax.js"
+import Api from "@/api/account.js"
 
 export default {
   name: 'App',
@@ -17,9 +17,7 @@ export default {
   methods: {
     checkLogin(to, from, next) {
       var self = this;
-      Ajax.get(
-        "/api/account/loginStatus",
-        {},
+      Api.loginStatus(
         () => {
           self.login = true;
           next();

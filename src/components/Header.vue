@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import Ajax from "@/ajax/ajax.js"
+import Api from "@/api/account.js"
 import { AppInfo } from '@/const.js'
 
 export default {
@@ -61,11 +61,7 @@ export default {
   }),
   created() {
     var self = this;
-    Ajax.get('/api/account/loginAccount',
-      {},
-      (body) => {
-        self.userName = body.name
-      })
+    Api.loginAccount((body) => self.userName = body.name)
   },
   methods: {
     clickHome() {
@@ -78,13 +74,7 @@ export default {
       window.open(AppInfo.GithubLink)
     },
     logout() {
-      Ajax.post('/api/account/logout',
-        {},
-        () => {
-          this.$router.push("/login")
-        },
-        () => {
-        })
+      Api.logout(() => this.$router.push("/login"))
     }
   },
 }

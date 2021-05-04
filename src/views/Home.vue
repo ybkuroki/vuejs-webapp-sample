@@ -44,7 +44,7 @@
 </style>
 
 <script>
-import Ajax from "@/ajax/ajax.js"
+import Api from "@/api/book.js"
 import Header from '@/components/Header.vue'
 import CreateCard from '@/views/CreateCard.vue'
 import EditCard from '@/views/EditCard.vue'
@@ -54,8 +54,6 @@ export default {
   name: 'home',
   data: () => ({
     books: [],
-    query: '',
-    uri: '',
     keyword: '',
     contents: [],
     isLoading: false,
@@ -67,7 +65,6 @@ export default {
     'Header': Header,
   },
   created() {
-    this.uri = '/api/book/list'
     this.getBookList()
     
     this.$store.dispatch(types.GET_CATEGORY)
@@ -75,19 +72,15 @@ export default {
   },
   methods: {
     search() {
-      this.isLoading = true
-      this.uri = '/api/book/search?query=' + this.keyword
-      this.currentPage = 1
-      this.isLoading = false
       this.getBookList()
     },
     getBookList() {
+      this.isLoading = true
       var self = this;
-      Ajax.get(self.uri, {},
+      Api.search({query: this.keyword}, 
         (body) => {
           self.books = body.content
-        },
-        () => {
+          this.isLoading = false
         })
     },
     create() {
