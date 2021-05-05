@@ -1,30 +1,30 @@
 <template>
-  <div>
-    <Header>
-      <template slot="header-content">
-        <md-field md-clearable class="search-box md-autocomplete md-autocomplete-box md-inline">
-          <div class="md-menu">
-            <md-input v-model="keyword" @keyup.enter="search" />
-          </div>
-          <label>Search...</label>
-        </md-field>
-        <md-button class="md-icon-button" @click="search">
-          <md-icon>search</md-icon>
-        </md-button>
-      </template>
-      
-      <template slot="app-content">
-        <CreateCard v-if="isCreate" @cancel="createCancel" />
-        <md-progress-spinner v-if="isLoading" md-mode="indeterminate"></md-progress-spinner>
-        <EditCard v-else v-for="book in books" :book="book" :key="book.id" @cancel="getBookList" />
-        <div class="margin"></div>
-      </template>
-    </Header>
+  <Header>
+    <template slot="header-content">
+      <md-field md-clearable class="search-box md-autocomplete md-autocomplete-box md-inline">
+        <div class="md-menu">
+          <md-input v-model="keyword" @keyup.enter="search" />
+        </div>
+        <label>Search...</label>
+      </md-field>
+      <md-button class="md-icon-button" @click="search">
+        <md-icon>search</md-icon>
+      </md-button>
+    </template>
+    
+    <template slot="app-content">
+      <CreateCard v-if="isCreate" @cancel="createCancel" />
+      <md-progress-spinner v-if="isLoading" md-mode="indeterminate"></md-progress-spinner>
+      <EditCard v-else v-for="book in books" :book="book" :key="book.id" @cancel="getBookList" />
+      <div class="margin"></div>
+    </template>
 
-    <md-button class="md-fab md-fab-bottom-right md-primary" @click="create">
-      <md-icon>add</md-icon>
-    </md-button>
-  </div>
+    <template slot="page-content">
+      <md-button class="md-fab md-fab-bottom-right md-primary" @click="create">
+        <md-icon>add</md-icon>
+      </md-button>
+    </template>
+  </Header>
 </template>
 
 <style>
