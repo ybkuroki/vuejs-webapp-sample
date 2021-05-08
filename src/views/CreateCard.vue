@@ -55,13 +55,6 @@ export default {
     }
   },
   methods: {
-    initilize() {
-      this.errors = '';
-      this.title = '';
-      this.isbn = '';
-      this.category = 1;
-      this.format = 1;
-    },
     create() {
       var self = this;
       this.isLoading = true
@@ -84,7 +77,6 @@ export default {
         })
     },
     cancel() {
-      this.initilize()
       this.$emit('cancel')
     }
   }
