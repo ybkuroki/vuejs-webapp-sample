@@ -42,8 +42,7 @@ export default {
       isbn: '',
       errors: [],
       category: 1,
-      format: 1,
-      isLoading: false
+      format: 1
     };
   },
   computed: {
@@ -56,8 +55,6 @@ export default {
   },
   methods: {
     create() {
-      var self = this;
-      this.isLoading = true
       var book = {
         title: this.title,
         isbn: this.isbn,
@@ -65,16 +62,7 @@ export default {
         formatId: this.format
       }
 
-      Api.create(
-        book,
-        () => {
-          this.isLoading = false
-          self.cancel()
-        },
-        (err) => {
-          this.isLoading = false
-          self.errors = err.response.data
-        })
+      Api.create(book, () => this.cancel(), (err) => this.errors = err.response.data)
     },
     cancel() {
       this.$emit('cancel')
