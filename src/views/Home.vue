@@ -48,7 +48,6 @@ import Api from "@/api/book.js"
 import Header from '@/components/Header.vue'
 import CreateCard from '@/views/CreateCard.vue'
 import EditCard from '@/views/EditCard.vue'
-import * as types from '@/store/mutation-types.js'
  
 export default {
   name: 'home',
@@ -66,9 +65,6 @@ export default {
   },
   created() {
     this.getBookList()
-    
-    this.$store.dispatch(types.GET_CATEGORY)
-    this.$store.dispatch(types.GET_FORMAT)
   },
   methods: {
     search() {
@@ -76,10 +72,9 @@ export default {
     },
     getBookList() {
       this.isLoading = true
-      var self = this;
       Api.search({query: this.keyword}, 
         (body) => {
-          self.books = body.content
+          this.books = body.content
           this.isLoading = false
         })
     },

@@ -61,12 +61,13 @@ import { AppInfo } from '@/const.js'
 export default {
   name: 'Header',
   data: () => ({
-    menuVisible: false,
-    userName: ''
+    menuVisible: false
   }),
-  created() {
-    var self = this;
-    Api.loginAccount((body) => self.userName = body.name)
+  computed: {
+    userName() {
+      let account = this.$store.getters.getLoginAccount
+      return account != null ? account.name : ''
+    }
   },
   methods: {
     clickHome() {
