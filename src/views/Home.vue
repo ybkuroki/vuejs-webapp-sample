@@ -1,6 +1,6 @@
 <template>
-  <Header>
-    <template slot="header-content">
+  <ViewBase>
+    <template slot="header">
       <md-field md-clearable class="search-box md-autocomplete md-autocomplete-box md-inline">
         <div class="md-menu">
           <md-input v-model="keyword" @keyup.enter="search" />
@@ -12,19 +12,19 @@
       </md-button>
     </template>
     
-    <template slot="app-content">
+    <template slot="main">
       <CreateCard v-if="isCreate" @cancel="createCancel" />
       <md-progress-spinner v-if="isLoading" md-mode="indeterminate"></md-progress-spinner>
       <EditCard v-else v-for="book in books" :book="book" :key="book.id" @cancel="getBookList" />
       <div class="margin"></div>
     </template>
 
-    <template slot="page-content">
+    <template slot="overlay">
       <md-button class="md-fab md-fab-bottom-right md-primary" @click="create">
         <md-icon>add</md-icon>
       </md-button>
     </template>
-  </Header>
+  </ViewBase>
 </template>
 
 <style>
@@ -45,7 +45,7 @@
 
 <script>
 import Api from "@/api/book.js"
-import Header from '@/components/Header.vue'
+import ViewBase from '@/components/ViewBase.vue'
 import CreateCard from '@/views/CreateCard.vue'
 import EditCard from '@/views/EditCard.vue'
  
@@ -61,7 +61,7 @@ export default {
   components: {
     'CreateCard': CreateCard,
     'EditCard': EditCard,
-    'Header': Header,
+    'ViewBase': ViewBase,
   },
   created() {
     this.getBookList()

@@ -7,7 +7,7 @@
             <md-icon>menu</md-icon>
           </md-button>
 
-          <slot name="header-content">
+          <slot name="header">
           </slot>
 
           <div class="md-toolbar-section-end">
@@ -44,12 +44,12 @@
       </md-app-drawer>
 
       <md-app-content>
-          <slot name="app-content">
+          <slot name="main">
           </slot>
       </md-app-content>
     </md-app>
     
-    <slot name="page-content" v-if="!menuVisible">
+    <slot name="overlay" v-if="!menuVisible">
     </slot>
   </div>
 </template>
@@ -59,7 +59,7 @@ import Api from "@/api/account.js"
 import { AppInfo } from '@/const.js'
 
 export default {
-  name: 'Header',
+  name: 'ViewBase',
   data: () => ({
     menuVisible: false
   }),
