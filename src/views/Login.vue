@@ -53,18 +53,16 @@ export default {
   methods: {
     login() {
       this.isLoading = true
-      var self = this
       Api.login(
-        {username: self.user, password: self.password},
+        {username: this.user, password: this.password},
         () => {
           this.isLoading = false
           this.$router.push("/home")
-          self.message = ''
         },
         () => {
           this.isLoading = false
           this.showErrorMessage = true
-          self.message = 'Failed to logged-in.'
+          this.message = 'Failed to logged-in.'
         })
     }
   }

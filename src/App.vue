@@ -1,11 +1,12 @@
 <template>
-  <div id="app" class="page-container">
+  <div id="app">
     <router-view/>
   </div>
 </template>
 
 <script>
 import Api from "@/api/account.js"
+import * as types from '@/store/mutation-types.js'
 
 export default {
   name: 'App',
@@ -16,17 +17,27 @@ export default {
   },
   methods: {
     checkLogin(to, from, next) {
-      var self = this;
       Api.loginStatus(
         () => {
-          self.login = true;
-          next();
+          this.login = true
+          this.setStore()
+          next()
         },
         () => {
-          self.login = false;
-          this.$router.push("/login");
+          this.login = false
+          this.$router.push("/login")
         }
-      );
+      )
+    },
+    setStore() {
+      let account = this.$store.getters.getLoginAccount
+      let category = this.$store.getters.getCategory
+      let format = this.$store.getters.getFormat
+      if (account == null && category == null && format == null) {
+        this.$store.dispatch(types.GET_LOGIN_ACCOUNT)
+        this.$store.dispatch(types.GET_CATEGORY)
+        this.$store.dispatch(types.GET_FORMAT)
+      }
     }
   }
 }

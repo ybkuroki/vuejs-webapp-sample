@@ -1,10 +1,10 @@
 <template>
-  <Header>
-    <template slot="header-content">
+  <ViewBase>
+    <template slot="header">
       <span class="md-title">About</span>
     </template>
     
-    <template slot="app-content">
+    <template slot="main">
       <md-list>
         <md-subheader class="md-primary">Application Name</md-subheader>
         <md-list-item>
@@ -22,12 +22,12 @@
         </md-list-item>
       </md-list>
     </template>
-  </Header>
+  </ViewBase>
 </template>
 
 <script>
 import { AppInfo } from '@/const.js'
-import Header from '@/components/Header.vue'
+import ViewBase from '@/components/ViewBase.vue'
 
 export default {
   name: 'About',
@@ -35,7 +35,7 @@ export default {
     AppInfo
   }),
   components: {
-    'Header': Header,
+    'ViewBase': ViewBase,
   },
 }
 </script>

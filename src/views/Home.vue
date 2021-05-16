@@ -1,30 +1,30 @@
 <template>
-  <div>
-    <Header>
-      <template slot="header-content">
-        <md-field md-clearable class="search-box md-autocomplete md-autocomplete-box md-inline">
-          <div class="md-menu">
-            <md-input v-model="keyword" @keyup.enter="search" />
-          </div>
-          <label>Search...</label>
-        </md-field>
-        <md-button class="md-icon-button" @click="search">
-          <md-icon>search</md-icon>
-        </md-button>
-      </template>
-      
-      <template slot="app-content">
-        <CreateCard v-if="isCreate" @cancel="createCancel" />
-        <md-progress-spinner v-if="isLoading" md-mode="indeterminate"></md-progress-spinner>
-        <EditCard v-else v-for="book in books" :book="book" :key="book.id" @cancel="getBookList" />
-        <div class="margin"></div>
-      </template>
-    </Header>
+  <ViewBase>
+    <template slot="header">
+      <md-field md-clearable class="search-box md-autocomplete md-autocomplete-box md-inline">
+        <div class="md-menu">
+          <md-input v-model="keyword" @keyup.enter="search" />
+        </div>
+        <label>Search...</label>
+      </md-field>
+      <md-button class="md-icon-button" @click="search">
+        <md-icon>search</md-icon>
+      </md-button>
+    </template>
+    
+    <template slot="main">
+      <CreateCard v-if="isCreate" @cancel="createCancel" />
+      <md-progress-spinner v-if="isLoading" md-mode="indeterminate"></md-progress-spinner>
+      <EditCard v-else v-for="book in books" :book="book" :key="book.id" @cancel="getBookList" />
+      <div class="margin"></div>
+    </template>
 
-    <md-button class="md-fab md-fab-bottom-right md-primary" @click="create">
-      <md-icon>add</md-icon>
-    </md-button>
-  </div>
+    <template slot="overlay">
+      <md-button class="md-fab md-fab-bottom-right md-primary" @click="create">
+        <md-icon>add</md-icon>
+      </md-button>
+    </template>
+  </ViewBase>
 </template>
 
 <style>
@@ -45,10 +45,9 @@
 
 <script>
 import Api from "@/api/book.js"
-import Header from '@/components/Header.vue'
+import ViewBase from '@/components/ViewBase.vue'
 import CreateCard from '@/views/CreateCard.vue'
 import EditCard from '@/views/EditCard.vue'
-import * as types from '@/store/mutation-types.js'
  
 export default {
   name: 'home',
@@ -62,13 +61,10 @@ export default {
   components: {
     'CreateCard': CreateCard,
     'EditCard': EditCard,
-    'Header': Header,
+    'ViewBase': ViewBase,
   },
   created() {
     this.getBookList()
-    
-    this.$store.dispatch(types.GET_CATEGORY)
-    this.$store.dispatch(types.GET_FORMAT)
   },
   methods: {
     search() {
@@ -76,10 +72,9 @@ export default {
     },
     getBookList() {
       this.isLoading = true
-      var self = this;
       Api.search({query: this.keyword}, 
         (body) => {
-          self.books = body.content
+          this.books = body.content
           this.isLoading = false
         })
     },

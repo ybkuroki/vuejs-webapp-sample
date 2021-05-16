@@ -65,9 +65,6 @@ export default {
     editable: false,
     errors: []
   }),
-  created() {
-    this.getBook()
-  },
   computed: {
     isEdit: {
       get() { return this.editable },
@@ -81,18 +78,6 @@ export default {
     }
   },
   methods: {
-    getBook() {
-      var self = this;
-      Api.get( 
-        {id: self.book.id},
-        (body) => {
-          self.errors = ''
-          self.title = body.title
-          self.isbn = body.isbn
-          self.category = body.category.id
-          self.format = body.format.id
-        })
-    },
     edit() {
       if(this.isEdit) {
         var book = {
@@ -103,12 +88,19 @@ export default {
           formatId: this.format
         }
 
-        var self = this;
-        Api.edit(book, () => self.cancel(), (err) => self.errors = err.response.data)
+        Api.edit(book, () => this.cancel(), (err) => this.errors = err.response.data)
 
       } else {
-        this.getBook()
-        this.isEdit = true
+        Api.get( 
+          {id: this.book.id},
+          (body) => {
+            this.errors = ''
+            this.title = body.title
+            this.isbn = body.isbn
+            this.category = body.category.id
+            this.format = body.format.id
+            this.isEdit = true
+          })
       }
     },
     remove() {
@@ -120,8 +112,7 @@ export default {
         formatId: this.format
       }
 
-      var self = this;
-      Api.delete(book, () => self.cancel())
+      Api.delete(book, () => this.cancel())
     },
     cancel() {
       this.isEdit = false
