@@ -106,10 +106,10 @@ export default {
     remove() {
       var book = {
         id: this.book.id,
-        title: this.title,
-        isbn: this.isbn,
-        categoryId: this.category,
-        formatId: this.format
+        title: this.isEdit ? this.title : this.book.title,
+        isbn: this.isEdit ? this.isbn : this.book.isbn,
+        categoryId: this.isEdit ? this.category : this.book.category.id,
+        formatId: this.isEdit ? this.format : this.book.format.id
       }
 
       Api.delete(book, () => this.cancel())
