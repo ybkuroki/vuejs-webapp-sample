@@ -6,6 +6,9 @@ import './registerServiceWorker'
 
 import './lib/vue-material'
 import './lib/fortawesome'
+import Dialog from './components/mixins/dialog'
+
+Vue.use(Dialog)
 
 Vue.config.productionTip = false
 

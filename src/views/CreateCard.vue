@@ -54,7 +54,7 @@ export default {
     }
   },
   methods: {
-    create() {
+    async create() {
       var book = {
         title: this.title,
         isbn: this.isbn,
@@ -62,7 +62,10 @@ export default {
         formatId: this.format
       }
 
-      Api.create(book, () => this.cancel(), (err) => this.errors = err.response.data)
+      var result = await this.$confirm("Do you want to register it?");
+      if (result) {
+        Api.create(book, () => this.cancel(), (err) => this.errors = err.response.data)
+      }
     },
     cancel() {
       this.$emit('cancel')
