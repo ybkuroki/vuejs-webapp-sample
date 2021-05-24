@@ -1,14 +1,12 @@
 import Vue from 'vue'
-import App from './App.vue'
-import router from './router/router'
-import store from './store/store'
-import './registerServiceWorker'
+import App from '@/App.vue'
+import router from '@/router/router'
+import store from '@/store/store'
+import '@/registerServiceWorker'
 
-import './lib/vue-material'
-import './lib/fortawesome'
-import Dialog from './components/mixins/dialog'
-
-Vue.use(Dialog)
+import '@/plugins/vue-material'
+import '@/plugins/fortawesome'
+import '@/plugins/custom'
 
 Vue.config.productionTip = false
 
