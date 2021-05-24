@@ -1,11 +1,12 @@
 import Vue from 'vue'
-import App from './App.vue'
-import router from './router/router'
-import store from './store/store'
-import './registerServiceWorker'
+import App from '@/App.vue'
+import router from '@/router/router'
+import store from '@/store/store'
+import '@/registerServiceWorker'
 
-import './lib/vue-material'
-import './lib/fortawesome'
+import '@/plugins/vue-material'
+import '@/plugins/fortawesome'
+import '@/plugins/custom'
 
 Vue.config.productionTip = false
 

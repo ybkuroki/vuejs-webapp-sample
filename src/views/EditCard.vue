@@ -78,7 +78,7 @@ export default {
     }
   },
   methods: {
-    edit() {
+    async edit() {
       if(this.isEdit) {
         var book = {
           id: this.book.id,
@@ -88,7 +88,10 @@ export default {
           formatId: this.format
         }
 
-        Api.edit(book, () => this.cancel(), (err) => this.errors = err.response.data)
+        var result = await this.$confirm("Do you want to update it?");
+        if (result) {
+          Api.edit(book, () => this.cancel(), (err) => this.errors = err.response.data)
+        }
 
       } else {
         Api.get( 
@@ -103,16 +106,19 @@ export default {
           })
       }
     },
-    remove() {
+    async remove() {
       var book = {
         id: this.book.id,
-        title: this.title,
-        isbn: this.isbn,
-        categoryId: this.category,
-        formatId: this.format
+        title: this.isEdit ? this.title : this.book.title,
+        isbn: this.isEdit ? this.isbn : this.book.isbn,
+        categoryId: this.isEdit ? this.category : this.book.category.id,
+        formatId: this.isEdit ? this.format : this.book.format.id
       }
 
-      Api.delete(book, () => this.cancel())
+      var result = await this.$confirm("Do you want to delete it?");
+      if (result) {
+        Api.delete(book, () => this.cancel())
+      }
     },
     cancel() {
       this.isEdit = false

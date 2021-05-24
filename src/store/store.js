@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import AccountApi from '../api/account.js'
-import MasterApi from '../api/master.js'
-import * as types from './mutation-types.js'
+import AccountApi from '@/api/account.js'
+import MasterApi from '@/api/master.js'
+import * as types from '@/store/mutation-types.js'
 
 Vue.use(Vuex)
 
