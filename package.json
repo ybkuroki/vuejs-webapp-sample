@@ -1,6 +1,6 @@
 {
   "name": "vuejs-webapp-sample",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -13,7 +13,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/vue-fontawesome": "^2.0.2",
     "axios": "^0.21.1",
-    "core-js": "^3.12.1",
+    "core-js": "^3.13.1",
     "register-service-worker": "^1.7.2",
     "vue": "^2.6.12",
     "vue-material": "^1.0.0-beta-14",
@@ -27,7 +27,7 @@
     "@vue/cli-service": "^4.5.13",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.27.0",
-    "eslint-plugin-vue": "^7.9.0",
+    "eslint-plugin-vue": "^7.10.0",
     "vue-template-compiler": "^2.6.12"
   }
 }
