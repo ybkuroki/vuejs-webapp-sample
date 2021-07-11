@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import Api from "@/api/account.js"
+import Api from "@/api/auth.js"
 import { AppInfo } from '@/const.js'
 
 export default {

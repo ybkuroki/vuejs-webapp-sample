@@ -107,17 +107,9 @@ export default {
       }
     },
     async remove() {
-      var book = {
-        id: this.book.id,
-        title: this.isEdit ? this.title : this.book.title,
-        isbn: this.isEdit ? this.isbn : this.book.isbn,
-        categoryId: this.isEdit ? this.category : this.book.category.id,
-        formatId: this.isEdit ? this.format : this.book.format.id
-      }
-
       var result = await this.$confirm("Do you want to delete it?");
       if (result) {
-        Api.delete(book, () => this.cancel())
+        Api.delete(this.book.id, () => this.cancel())
       }
     },
     cancel() {

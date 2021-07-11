@@ -6,27 +6,15 @@ export const AppInfo = {
 };
 
 const api = "/api"
-const apiBookBase = api + "/book"
-const apiMasterBase = api + "/master"
-const apiAccountBase = api + "/account"
+const apiAuthBase = api + "/auth"
 
-export const ApiBook = {
-  Base: apiBookBase,
-  List: apiBookBase + "/list",
-  Search: apiBookBase + "/search",
-  Create: apiBookBase + "/new",
-  Edit: apiBookBase + "/edit",
-  Delete: apiBookBase + "/delete"
-}
+export const ApiBook = api + "/books"
+export const ApiCategory = api + "/categories"
+export const ApiFormat = api + "/formats"
 
-export const ApiMaster = {
-  Category: apiMasterBase + "/category",
-  Format: apiMasterBase + "/format"
-}
-
-export const ApiAccount = {
-  LoginStatus: apiAccountBase + "/loginStatus",
-  LoginAccount: apiAccountBase + "/loginAccount",
-  Login: apiAccountBase + "/login",
-  Logout: apiAccountBase + "/logout"
+export const apiAuth = {
+  LoginStatus: apiAuthBase + "/loginStatus",
+  LoginAccount: apiAuthBase + "/loginAccount",
+  Login: apiAuthBase + "/login",
+  Logout: apiAuthBase + "/logout"
 }

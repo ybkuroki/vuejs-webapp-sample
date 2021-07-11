@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import AccountApi from '@/api/account.js'
-import MasterApi from '@/api/master.js'
+import AuthApi from '@/api/auth.js'
+import CategoryApi from '@/api/category.js'
+import FormatApi from '@/api/format.js'
 import * as types from '@/store/mutation-types.js'
 
 Vue.use(Vuex)
@@ -13,13 +14,13 @@ const state = {account: null, category: null, format: null}
 // Action calls Web API using ajax. It's executed mutations when calls commit() method.
 const actions = {
   [types.GET_LOGIN_ACCOUNT]({ commit }) {
-    AccountApi.loginAccount((body) => commit(types.GET_LOGIN_ACCOUNT, body))
+    AuthApi.loginAccount((body) => commit(types.GET_LOGIN_ACCOUNT, body))
   },
   [types.GET_CATEGORY] ({ commit }) {
-    MasterApi.category((body) => commit(types.GET_CATEGORY, body))
+    CategoryApi.list((body) => commit(types.GET_CATEGORY, body))
   },
   [types.GET_FORMAT] ({ commit }) {
-    MasterApi.format((body) => commit(types.GET_FORMAT, body))
+    FormatApi.list((body) => commit(types.GET_FORMAT, body))
   }
 }
 
