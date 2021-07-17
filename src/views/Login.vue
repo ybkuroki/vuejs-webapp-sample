@@ -36,7 +36,7 @@
 
 <script>
 import { AppInfo } from '@/const.js'
-import Api from '@/api/account.js'
+import Api from '@/api/auth.js'
 
 export default {
   name: "Login",

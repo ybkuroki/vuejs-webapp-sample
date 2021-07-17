@@ -27,14 +27,21 @@ export default class Ajax {
         if (failure) failure(err)
       })
   }
-  
-  static formPost(url, data = {}, success, failure) {
-    const params = this.createParameter(data)
-    const config = {
-      headers: { "Content-Type": "application/x-www-form-urlencoded" }
-    }
+
+  static put(url, data = {}, success, failure) {
     axios
-      .post(url, params, config)
+      .put(url, data)
+      .then(res => {
+        if (success) success(res.data)
+      })
+      .catch(err => {
+        if (failure) failure(err)
+      })
+  }
+
+  static delete(url, data = {}, success, failure) {
+    axios
+      .delete(url, data)
       .then(res => {
         if (success) success(res.data)
       })

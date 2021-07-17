@@ -1,6 +1,6 @@
 {
   "name": "vuejs-webapp-sample",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -13,11 +13,11 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/vue-fontawesome": "^2.0.2",
     "axios": "^0.21.1",
-    "core-js": "^3.14.0",
+    "core-js": "^3.15.2",
     "register-service-worker": "^1.7.2",
     "vue": "^2.6.14",
     "vue-material": "^1.0.0-beta-14",
-    "vue-router": "^3.5.1",
+    "vue-router": "^3.5.2",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
@@ -26,8 +26,8 @@
     "@vue/cli-plugin-pwa": "^4.5.13",
     "@vue/cli-service": "^4.5.13",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.28.0",
-    "eslint-plugin-vue": "^7.11.0",
+    "eslint": "^7.30.0",
+    "eslint-plugin-vue": "^7.13.0",
     "vue-template-compiler": "^2.6.14"
   }
 }
