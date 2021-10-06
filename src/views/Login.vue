@@ -14,7 +14,7 @@
 
         <md-field md-has-password>
           <label>Password</label>
-          <md-input v-model="password" type="password"></md-input>
+          <md-input v-model="password" type="password" @keyup.enter="login"></md-input>
         </md-field>
       </div>
 
