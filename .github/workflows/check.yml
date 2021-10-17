@@ -8,6 +8,9 @@ jobs:
   check:
     name: check
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
     steps:
       - uses: actions/checkout@v2.3.4
       - name: eslint review
@@ -16,3 +19,11 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           eslint_flags: 'src/**/*.{vue,js}'
+      - name: use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install package
+        run: npm install
+      - name: build vue code
+        run: npm run build
