@@ -79,7 +79,7 @@ This sample uses the following library.
 
 |Library Name|Version|Description|
 |:---|:---:|:---|
-|vue-cli|4.5.13|The tool for Vue.js Development.|
+|vue-cli|4.5.14|The tool for Vue.js Development.|
 |Vue.js|2.6.14|JavaScript Framework|
 |Vue Router|3.5.2|Library for Routing.|
 |Vuex|3.6.2|Flux library for Vue.js|
