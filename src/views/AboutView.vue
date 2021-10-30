@@ -30,7 +30,7 @@ import { AppInfo } from '@/const.js'
 import ViewBase from '@/components/ViewBase.vue'
 
 export default {
-  name: 'About',
+  name: 'AboutView',
   data: () => ({
     AppInfo
   }),
