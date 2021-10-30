@@ -50,7 +50,7 @@ import CreateCard from '@/views/CreateCard.vue'
 import EditCard from '@/views/EditCard.vue'
  
 export default {
-  name: 'home',
+  name: 'HomeView',
   data: () => ({
     books: [],
     keyword: '',

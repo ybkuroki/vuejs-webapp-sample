@@ -39,7 +39,7 @@ import { AppInfo } from '@/const.js'
 import Api from '@/api/auth.js'
 
 export default {
-  name: "Login",
+  name: "LoginView",
   data() {
     return {
       AppInfo,
