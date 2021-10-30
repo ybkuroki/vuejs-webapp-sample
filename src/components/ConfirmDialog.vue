@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'Confirm',
+  name: 'ConfirmDialog',
   props: {
     message: String,
     success: Function,
