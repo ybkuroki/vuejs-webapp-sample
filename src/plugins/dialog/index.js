@@ -1,4 +1,4 @@
-import Confirm from '@/components/Confirm.vue'
+import Confirm from '@/components/ConfirmDialog.vue'
 
 export default class Dialog {
   static install(Vue) {
