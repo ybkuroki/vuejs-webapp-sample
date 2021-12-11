@@ -13,7 +13,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/vue-fontawesome": "^2.0.6",
     "axios": "^0.24.0",
-    "core-js": "^3.19.2",
+    "core-js": "^3.19.3",
     "register-service-worker": "^1.7.2",
     "vue": "^2.6.14",
     "vue-material": "^1.0.0-beta-14",
@@ -27,7 +27,7 @@
     "@vue/cli-service": "^4.5.15",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.1.1",
+    "eslint-plugin-vue": "^8.2.0",
     "vue-template-compiler": "^2.6.14"
   }
 }
