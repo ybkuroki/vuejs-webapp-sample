@@ -79,11 +79,11 @@ This sample uses the following library.
 
 |Library Name|Version|Description|
 |:---|:---:|:---|
-|vue-cli|4.5.14|The tool for Vue.js Development.|
+|vue-cli|4.5.15|The tool for Vue.js Development.|
 |Vue.js|2.6.14|JavaScript Framework|
-|Vue Router|3.5.2|Library for Routing.|
+|Vue Router|3.5.3|Library for Routing.|
 |Vuex|3.6.2|Flux library for Vue.js|
-|axios|0.21.1|library for Ajax.|
+|axios|0.24.0|library for Ajax.|
 |vue-material|1.0.0-beta-14|CSS Framework|
 
 ## Contribution
