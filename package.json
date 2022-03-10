@@ -12,7 +12,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.0.0",
     "@fortawesome/free-solid-svg-icons": "^6.0.0",
     "@fortawesome/vue-fontawesome": "^2.0.6",
-    "axios": "^0.26.0",
+    "axios": "^0.26.1",
     "core-js": "^3.21.1",
     "register-service-worker": "^1.7.2",
     "vue": "^2.6.14",
