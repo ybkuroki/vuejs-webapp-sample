@@ -7,7 +7,7 @@ jobs:
   Release:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2.4.0
+    - uses: actions/checkout@v3.0.0
       with:
         fetch-depth: 50
     - uses: notlmn/release-with-changelog@v3.5.1
