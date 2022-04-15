@@ -12,7 +12,7 @@ jobs:
       matrix:
         node-version: [14.x]
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3.0.1
       - name: eslint review
         uses: reviewdog/action-eslint@v1.16
         with:
