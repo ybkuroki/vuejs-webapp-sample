@@ -12,15 +12,15 @@ jobs:
       matrix:
         node-version: [14.x]
     steps:
-      - uses: actions/checkout@v3.0.1
+      - uses: actions/checkout@v3.0.2
       - name: eslint review
-        uses: reviewdog/action-eslint@v1.16
+        uses: reviewdog/action-eslint@v1.17
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           eslint_flags: 'src/**/*.{vue,js}'
       - name: use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3.1.1
+        uses: actions/setup-node@v3.4.1
         with:
           node-version: ${{ matrix.node-version }}
       - name: install package
