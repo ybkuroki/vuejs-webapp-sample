@@ -81,7 +81,7 @@ This sample uses the following library.
 |:---|:---:|:---|
 |vue-cli|5.0.8|The tool for Vue.js Development.|
 |Vue.js|2.7.0|JavaScript Framework|
-|Vue Router|3.5.4|Library for Routing.|
+|Vue Router|3.6.5|Library for Routing.|
 |Vuex|3.6.2|Flux library for Vue.js|
 |axios|0.27.2|library for Ajax.|
 |vue-material|1.0.0-beta-14|CSS Framework|

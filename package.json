@@ -1,6 +1,6 @@
 {
   "name": "vuejs-webapp-sample",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -17,7 +17,7 @@
     "register-service-worker": "^1.7.2",
     "vue": "^2.7.0",
     "vue-material": "^1.0.0-beta-14",
-    "vue-router": "^3.5.4",
+    "vue-router": "^3.6.5",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
