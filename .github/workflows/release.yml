@@ -7,10 +7,10 @@ jobs:
   Release:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3.0.2
+    - uses: actions/checkout@v3.1.0
       with:
         fetch-depth: 50
-    - uses: notlmn/release-with-changelog@v3.6.0
+    - uses: notlmn/release-with-changelog@v3.6.1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         exclude: '^polish|^bump|^typo'
