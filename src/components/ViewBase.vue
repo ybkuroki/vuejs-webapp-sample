@@ -1,93 +1,102 @@
-<template>
-  <div>
-    <md-app md-waterfall md-mode="fixed">
-      <md-app-toolbar class="md-primary">
-        <div class="md-toolbar-row">
-          <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
-            <md-icon>menu</md-icon>
-          </md-button>
+<script setup lang="ts">
+import { ref, computed } from "vue";
+import { useRouter } from "vue-router";
 
-          <slot name="header">
-          </slot>
-
-          <div class="md-toolbar-section-end">
-            <md-button class="md-icon-button" @click="clickGithub">
-              <md-icon><font-awesome-icon :icon="['fab', 'github']" /></md-icon>
-            </md-button>
-            <label v-if="userName != ''">{{ userName }}</label>
-            <md-button class="md-icon-button" @click="logout">
-              <md-icon><font-awesome-icon :icon="['fas', 'sign-out-alt']" /></md-icon>
-            </md-button>
-          </div>
-        </div>
-      </md-app-toolbar>
-
-      <md-app-drawer :md-active.sync="menuVisible">
-        <md-toolbar class="md-transparent" md-elevation="0">Navigation</md-toolbar>
-
-        <md-list>
-          <md-list-item @click="clickHome">
-            <md-icon>home</md-icon>
-            <span class="md-list-item-text">Home</span>
-          </md-list-item>
-
-          <md-list-item @click="clickAbout">
-            <md-icon>info</md-icon>
-            <span class="md-list-item-text">About</span>
-          </md-list-item>
-
-          <md-list-item @click="clickGithub">
-            <md-icon><font-awesome-icon :icon="['fab', 'github']" /></md-icon>
-            <span class="md-list-item-text">GitHub</span>
-          </md-list-item>
-        </md-list>
-      </md-app-drawer>
-
-      <md-app-content>
-          <slot name="main">
-          </slot>
-      </md-app-content>
-    </md-app>
-    
-    <slot name="overlay" v-if="!menuVisible">
-    </slot>
-  </div>
-</template>
-
-<script>
-import Api from "@/api/auth.js"
 import { AppInfo } from '@/const.js'
+import { useAccountStore } from '@/stores/account'
+import { useCategoryStore } from '@/stores/category'
+import { useFormatStore } from '@/stores/format'
+import Account from "@/types/account";
 
-export default {
-  name: 'ViewBase',
-  data: () => ({
-    menuVisible: false
-  }),
-  computed: {
-    userName() {
-      let account = this.$store.getters.getLoginAccount
-      return account != null ? account.name : ''
-    }
-  },
-  methods: {
-    clickHome() {
-      this.$router.push('home', () => {})
-    },
-    clickAbout() {
-      this.$router.push('about', () => {})
-    },
-    clickGithub() {
-      window.open(AppInfo.GithubLink)
-    },
-    logout() {
-      Api.logout(() => this.$router.push("/login"))
-    }
-  },
+const router = useRouter()
+const store = useAccountStore()
+
+const leftDrawerOpen = ref(false);
+
+const userName = computed(() => {
+  return store.account != null ? store.account.name : ''
+})
+
+const clickGitHubBtn = () => {
+  window.open(AppInfo.GithubLink)
 }
+
+const logout = () => {
+  const model = new Account()
+  model.logout(() => router.push("/login"))
+}
+
+const setStore = () => {
+  useAccountStore().getLoginAccount()
+  useCategoryStore().getCategories()
+  useFormatStore().getFormats()
+}
+
+setStore()
 </script>
 
-<style>
-.md-app {
-  height: 100vh;
-}
-</style>
+<template>
+  <q-layout view="hHh lpR fFf">
+    <q-header elevated class="bg-indigo text-white">
+      <q-toolbar>
+        <q-btn class="q-my-sm q-mr-sm" flat round icon="menu" @click="leftDrawerOpen = !leftDrawerOpen" />
+
+        <slot name="header"></slot>
+        <q-space></q-space>
+
+        <q-btn class="q-mx-sm" flat round @click="clickGitHubBtn">
+          <q-icon name="fab fa-github" />
+        </q-btn>
+
+        <q-chip class="" color="indigo" text-color="white">
+          <q-avatar>
+            <q-icon name="fas fa-user" color="white"></q-icon>
+          </q-avatar>
+          {{ userName }}
+        </q-chip>
+
+        <q-btn class="q-mx-sm" flat round @click="logout">
+          <q-icon name="logout" />
+        </q-btn>
+      </q-toolbar>
+    </q-header>
+
+    <q-drawer class="bg-indigo-5" v-model="leftDrawerOpen" bordered>
+      <q-scroll-area class="fit">
+        <q-list>
+          <q-item clickable class="text-white" active-class="bg-indigo-8" v-ripple @click="$router.push('/home')">
+            <q-item-section avatar>
+              <q-icon name="home" />
+            </q-item-section>
+            <q-item-section>
+              Home
+            </q-item-section>
+          </q-item>
+          <q-separator />
+          <q-item clickable class="text-white" active-class="bg-indigo-8" v-ripple @click="clickGitHubBtn">
+            <q-item-section avatar>
+              <q-icon name="fab fa-github" />
+            </q-item-section>
+            <q-item-section>
+              GitHub
+            </q-item-section>
+          </q-item>
+          <q-separator />
+          <q-item clickable class="text-white" active-class="bg-indigo-8" v-ripple @click="$router.push('/about')">
+            <q-item-section avatar>
+              <q-icon name="info" />
+            </q-item-section>
+            <q-item-section>
+              About
+            </q-item-section>
+          </q-item>
+          <q-separator />
+        </q-list>
+      </q-scroll-area>
+    </q-drawer>
+
+    <q-page-container>
+      <slot name="main"></slot>
+    </q-page-container>
+  </q-layout>
+</template>

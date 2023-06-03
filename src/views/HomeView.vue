@@ -1,91 +1,61 @@
+<script setup lang="ts">
+import { ref } from "vue";
+import ViewBase from "@/components/ViewBase.vue";
+import CreateCard from "@/components/CreateCard.vue";
+import EditCard from "@/components/EditCard.vue";
+import Book from "@/types/book";
+
+const isCreate = ref(false);
+const search = ref("");
+const books = ref(new Array<Book>(0))
+const isLoading = ref(false)
+
+const getBooks = () => {
+  isLoading.value = true
+  let model = new Book()
+  model.getBooks({ query: search.value },
+    (data) => { books.value = data.content; isLoading.value = false },
+    (err) => isLoading.value = false)
+}
+
+const create = () => {
+  isCreate.value = true
+  window.scrollTo(0, 0);
+}
+
+const createCancel = () => {
+  isCreate.value = false
+  getBooks()
+}
+
+getBooks()
+</script>
+
 <template>
   <ViewBase>
-    <template slot="header">
-      <md-field md-clearable class="search-box md-autocomplete md-autocomplete-box md-inline">
-        <div class="md-menu">
-          <md-input v-model="keyword" @keyup.enter="search" />
-        </div>
-        <label>Search...</label>
-      </md-field>
-      <md-button class="md-icon-button" @click="search">
-        <md-icon>search</md-icon>
-      </md-button>
-    </template>
-    
-    <template slot="main">
-      <CreateCard v-if="isCreate" @cancel="createCancel" />
-      <md-progress-spinner v-if="isLoading" md-mode="indeterminate"></md-progress-spinner>
-      <EditCard v-else v-for="book in books" :book="book" :key="book.id" @cancel="getBookList" />
-      <div class="margin"></div>
+    <template v-slot:header>
+      <q-input dark dense standout v-model="search" input-class="text-left" class="col" placeholder="Search..."
+        @keyup.enter="getBooks">
+        <template v-slot:append>
+          <q-icon v-if="search === ''" name="search" @click="getBooks" />
+          <q-icon v-else name="clear" class="cursor-pointer" @click="search = ''" />
+        </template>
+      </q-input>
     </template>
 
-    <template slot="overlay">
-      <md-button class="md-fab md-fab-bottom-right md-primary" @click="create">
-        <md-icon>add</md-icon>
-      </md-button>
+    <template v-slot:main>
+      <div class="q-pa-md items-start q-gutter-md">
+        <div v-if="isLoading" class="window-height window-width row justify-center items-center">
+          <q-spinner color="indigo" size="xl" :thickness="10" />
+        </div>
+
+        <CreateCard v-if="isCreate" @cancel="createCancel" />
+        <EditCard v-for="book in books" :book="book" :key="book.id" @cancel="createCancel" />
+      </div>
+
+      <q-page-sticky position="bottom-right" :offset="[18, 18]">
+        <q-btn round color="indigo" icon="add" size="lg" @click="create" />
+      </q-page-sticky>
     </template>
   </ViewBase>
 </template>
-
-<style>
-.search-box {
-  min-width: 20px;
-}
-.md-card {
-  margin: 10px;
-}
-.md-card-content {
-  font-size: 16px !important;
-  padding: 20px;
-}
-.margin {
-  height:70px;
-}
-</style>
-
-<script>
-import Api from "@/api/book.js"
-import ViewBase from '@/components/ViewBase.vue'
-import CreateCard from '@/views/CreateCard.vue'
-import EditCard from '@/views/EditCard.vue'
- 
-export default {
-  name: 'HomeView',
-  data: () => ({
-    books: [],
-    keyword: '',
-    contents: [],
-    isLoading: false,
-    isCreate: false,
-  }),
-  components: {
-    'CreateCard': CreateCard,
-    'EditCard': EditCard,
-    'ViewBase': ViewBase,
-  },
-  created() {
-    this.getBookList()
-  },
-  methods: {
-    search() {
-      this.getBookList()
-    },
-    getBookList() {
-      this.isLoading = true
-      Api.search({query: this.keyword}, 
-        (body) => {
-          this.books = body.content
-          this.isLoading = false
-        })
-    },
-    create() {
-      this.isCreate = true
-      document.querySelector('.md-app-scroller').scrollTop = 0
-    },
-    createCancel() {
-      this.isCreate = false
-      this.getBookList()
-    }
-  }
-}
-</script>
