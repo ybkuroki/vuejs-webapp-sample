@@ -5,7 +5,7 @@
 [![release](https://img.shields.io/github/release/ybkuroki/vuejs-webapp-sample?style=for-the-badge&logo=github)](https://github.com/ybkuroki/vuejs-webapp-sample/releases)
 
 ## Preface
-This sample project uses [Vue.js](https://vuejs.org/index.html) and [Vue Material](https://vuematerial.io/). It provides only Web UI. So, I recommend using the [golang-webapp-sample](https://github.com/ybkuroki/golang-webapp-sample) project as Back End Application.
+This sample project uses [Vue.js](https://vuejs.org/index.html) and [Quasar Framework](https://quasar.dev/). It provides only Web UI. So, I recommend using the [golang-webapp-sample](https://github.com/ybkuroki/golang-webapp-sample) project as Back End Application.
 
 ## Install
 Perform the following steps:
