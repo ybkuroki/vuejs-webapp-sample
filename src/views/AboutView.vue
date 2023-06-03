@@ -1,41 +1,34 @@
+<script setup lang="ts">
+import ViewBase from "@/components/ViewBase.vue";
+import { AppInfo } from '@/const.js'
+</script>
+
 <template>
   <ViewBase>
-    <template slot="header">
-      <span class="md-title">About</span>
-    </template>
-    
-    <template slot="main">
-      <md-list>
-        <md-subheader class="md-primary">Application Name</md-subheader>
-        <md-list-item>
-          <span class="md-list-item-text">{{ AppInfo.AppName }}</span>
-        </md-list-item>
-        
-        <md-subheader class="md-primary">Developer</md-subheader>
-        <md-list-item>
-          <span class="md-list-item-text">{{ AppInfo.AppDeveloper }}</span>
-        </md-list-item>
-        
-        <md-subheader class="md-primary">Github</md-subheader>
-        <md-list-item>
-          <span class="md-list-item-text">{{ AppInfo.GithubLink }}</span>
-        </md-list-item>
-      </md-list>
+    <template v-slot:main>
+      <div class="q-pa-md">
+        <q-list>
+          <q-item-label header class="text-indigo text-bold">Application Name</q-item-label>
+          <q-item>
+            <q-item-section>{{ AppInfo.AppName }}</q-item-section>
+          </q-item>
+
+          <q-separator spaced />
+
+          <q-item-label header class="text-indigo text-bold">Developer</q-item-label>
+          <q-item>
+            <q-item-section>{{ AppInfo.AppDeveloper }}</q-item-section>
+          </q-item>
+
+          <q-separator spaced />
+
+          <q-item-label header class="text-indigo text-bold">GitHub</q-item-label>
+          <q-item>
+            <q-item-section>{{ AppInfo.GithubLink }}</q-item-section>
+          </q-item>
+        </q-list>
+      </div>
     </template>
   </ViewBase>
 </template>
 
-<script>
-import { AppInfo } from '@/const.js'
-import ViewBase from '@/components/ViewBase.vue'
-
-export default {
-  name: 'AboutView',
-  data: () => ({
-    AppInfo
-  }),
-  components: {
-    'ViewBase': ViewBase,
-  },
-}
-</script>
