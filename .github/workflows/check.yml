@@ -10,17 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [18.x]
     steps:
-      - uses: actions/checkout@v3.2.0
-      - name: eslint review
-        uses: reviewdog/action-eslint@v1.17
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
-          eslint_flags: 'src/**/*.{vue,js}'
+      - uses: actions/checkout@v3.4.0
       - name: use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3.5.1
+        uses: actions/setup-node@v3.6.0
         with:
           node-version: ${{ matrix.node-version }}
       - name: install package
