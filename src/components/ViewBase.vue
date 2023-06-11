@@ -6,7 +6,6 @@ import { AppInfo } from '@/const.js'
 import { useAccountStore } from '@/stores/account'
 import { useCategoryStore } from '@/stores/category'
 import { useFormatStore } from '@/stores/format'
-import Account from "@/types/account";
 
 const router = useRouter()
 const store = useAccountStore()
@@ -22,8 +21,7 @@ const clickGitHubBtn = () => {
 }
 
 const logout = () => {
-  const model = new Account()
-  model.logout(() => router.push("/login"))
+  router.push("/login")
 }
 
 const setStore = () => {

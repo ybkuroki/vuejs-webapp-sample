@@ -7,8 +7,11 @@ export const useCategoryStore = defineStore('category', () => {
   const category = ref(categories)
 
   function getCategories() {
-    const model = new Category()
-    model.getCategories((body) => category.value = body)
+    let categories: Array<Category> = [];
+    categories.push({ id: 1, name: 'Technical Book' });
+    categories.push({ id: 2, name: 'Managine' });
+    categories.push({ id: 3, name: 'Novel' });
+    category.value = categories
   }
 
   return {

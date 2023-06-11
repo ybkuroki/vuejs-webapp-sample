@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { categories, formats, confirm } from '@/components/index'
-import Book from '@/types/book'
-import Category from "@/types/category";
-import Format from "@/types/format";
 import { useQuasar } from "quasar";
 
 const title = ref("");
@@ -23,17 +20,7 @@ const create = () => {
 }
 
 const doCreate = () => {
-  isLoading.value = true
-  let model = new Book(0, title.value, isbn.value, category.value.id, new Category(), format.value.id, new Format())
-  model.createBook(
-    () => {
-      isLoading.value = false
-      emit('cancel')
-    },
-    (err) => {
-      isLoading.value = false
-      errs.value = err
-    });
+  emit('cancel')
 }
 </script>
 

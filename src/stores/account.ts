@@ -6,8 +6,10 @@ export const useAccountStore = defineStore('account', () => {
   const account = ref(new Account())
 
   function getLoginAccount() {
-    const model = new Account()
-    model.getLoginAccount((body) => account.value = body)
+    let test = new Account()
+    test.id = 1
+    test.name = "test"
+    account.value = test
   }
 
   return {

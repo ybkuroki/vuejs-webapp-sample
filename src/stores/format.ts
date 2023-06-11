@@ -7,8 +7,10 @@ export const useFormatStore = defineStore('format', () => {
   const format = ref(formats)
 
   function getFormats() {
-    const model = new Format()
-    model.getFormats((body) => format.value = body)
+    let formats: Array<Format> = [];
+    formats.push({ id: 1, name: 'Paper Book' });
+    formats.push({ id: 2, name: 'e-Book' });
+    format.value = formats
   }
 
   return {

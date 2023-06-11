@@ -24,12 +24,12 @@ const $q = useQuasar()
 
 const edit = () => {
   if (isEdit.value) {
-    isLoading.value = true
     confirm($q, 'Do you want to update it?', () => doEdit(), () => false)
 
   } else {
     let model = new Book()
-    model.getBook(props.book.id,
+    isEdit.value = true
+    /*model.getBook(props.book.id,
       (data) => {
         title.value = data.title
         isbn.value = data.isbn
@@ -37,21 +37,12 @@ const edit = () => {
         format.value = data.format
         errs.value = new Map<string, string>()
         isEdit.value = true
-      })
+      })*/
   }
 }
 
 const doEdit = () => {
-  let model = new Book(props.book.id, title.value, isbn.value, category.value.id, category.value, format.value.id, format.value)
-  model.editBook(
-    () => {
-      cancel()
-      isLoading.value = false
-    },
-    (err) => {
-      errs.value = err
-      isLoading.value = false
-    })
+  cancel()
 }
 
 const remove = () => {
@@ -59,8 +50,7 @@ const remove = () => {
 }
 
 const doRemove = () => {
-  let model = new Book(props.book.id, title.value, isbn.value, category.value.id, category.value, format.value.id, format.value)
-  model.deleteBook(() => cancel())
+  cancel()
 }
 
 const cancel = () => {

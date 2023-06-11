@@ -3,8 +3,6 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 import { AppInfo } from '@/const.js'
-import Account from "@/types/account";
-import { Notify } from "quasar";
 
 const user = ref("");
 const password = ref("");
@@ -13,19 +11,7 @@ const isLoading = ref(false)
 const router = useRouter()
 
 const login = () => {
-  isLoading.value = true
-
-  const model = new Account()
-  model.login(
-    { username: user.value, password: password.value },
-    () => {
-      isLoading.value = false
-      router.push("/home")
-    },
-    () => {
-      isLoading.value = false
-      Notify.create('Failed to logged-in.')
-    })
+  router.push("/home")
 }
 </script>
 

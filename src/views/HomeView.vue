@@ -4,6 +4,8 @@ import ViewBase from "@/components/ViewBase.vue";
 import CreateCard from "@/components/CreateCard.vue";
 import EditCard from "@/components/EditCard.vue";
 import Book from "@/types/book";
+import Category from "@/types/category";
+import Format from "@/types/format";
 
 const isCreate = ref(false);
 const search = ref("");
@@ -11,11 +13,22 @@ const books = ref(new Array<Book>(0))
 const isLoading = ref(false)
 
 const getBooks = () => {
-  isLoading.value = true
-  let model = new Book()
-  model.getBooks({ query: search.value },
-    (data) => { books.value = data.content; isLoading.value = false },
-    (err) => isLoading.value = false)
+  let categories: Array<Category> = [];
+  categories.push({ id: 1, name: 'Technical Book' });
+  categories.push({ id: 2, name: 'Managine' });
+  categories.push({ id: 3, name: 'Novel' });
+
+  let formats: Array<Format> = [];
+  formats.push({ id: 1, name: 'Paper Book' });
+  formats.push({ id: 2, name: 'e-Book' });
+
+  let bookdatas: Array<Book> = [];
+  bookdatas.push({ id: 1, title: "Test1", isbn: "123-234-123-1", categoryId: 1, category: categories[0], formatId: 2, format: formats[1] })
+  bookdatas.push({ id: 2, title: "Test2", isbn: "123-234-123-2", categoryId: 2, category: categories[1], formatId: 1, format: formats[0] })
+  bookdatas.push({ id: 3, title: "Test3", isbn: "123-234-123-3", categoryId: 3, category: categories[2], formatId: 2, format: formats[1] })
+  bookdatas.push({ id: 4, title: "Test4", isbn: "123-234-123-4", categoryId: 1, category: categories[0], formatId: 1, format: formats[0] })
+  bookdatas.push({ id: 5, title: "Test5", isbn: "123-234-123-5", categoryId: 2, category: categories[1], formatId: 2, format: formats[1] })
+  books.value = bookdatas
 }
 
 const create = () => {
