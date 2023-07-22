@@ -66,8 +66,21 @@ const login = () => {
 </template>
 
 <style lang="scss" scoped>
-.q-card {
-  width: 50vw;
-  height: auto;
+@media (min-width:800px) {
+
+  // 800px or more
+  .q-card {
+    width: 50vw;
+    height: auto;
+  }
+}
+
+@media (max-width: 799px) {
+
+  // 799px or less
+  .q-card {
+    width: 90vw;
+    height: auto;
+  }
 }
 </style>
