@@ -9,6 +9,7 @@ import { Notify } from "quasar";
 const user = ref("");
 const password = ref("");
 const isLoading = ref(false)
+const isPwd = ref(true)
 
 const router = useRouter()
 
@@ -46,9 +47,14 @@ const login = () => {
                       <q-icon name="person" />
                     </template>
                   </q-input>
-                  <q-input square filled clearable v-model="password" type="password" label="Password" tabindex="2">
+                  <q-input square filled v-model="password" :type="isPwd ? 'password' : 'text'" label="Password"
+                    tabindex="2">
                     <template v-slot:prepend>
                       <q-icon name="lock" />
+                    </template>
+                    <template v-slot:append>
+                      <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer"
+                        @click="isPwd = !isPwd" />
                     </template>
                   </q-input>
                 </q-form>
