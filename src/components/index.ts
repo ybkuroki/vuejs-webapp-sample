@@ -2,6 +2,7 @@ import { computed } from "vue";
 import type { QVueGlobals } from "quasar";
 import { useCategoryStore } from '@/stores/category'
 import { useFormatStore } from '@/stores/format'
+import Dialog from '@/components/Dialog.vue'
 
 export const categories = computed(() => {
   const store = useCategoryStore()
@@ -15,9 +16,14 @@ export const formats = computed(() => {
 
 export const confirm = ($q: QVueGlobals, message: string, onOk: () => void, onCancel: () => void) => {
   $q.dialog({
-    title: 'Confirm',
-    message: message,
-    cancel: true,
+    component: Dialog,
+
+    componentProps: {
+      title: 'Confirm',
+      message: message,
+      cancel: true,
+      persistent: true
+    },
     persistent: true
   }).onOk(() => {
     onOk()
