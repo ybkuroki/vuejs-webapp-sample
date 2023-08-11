@@ -24,7 +24,6 @@ export const confirm = ($q: QVueGlobals, message: string, onOk: () => void, onCa
       cancel: true,
       persistent: true
     },
-    persistent: true
   }).onOk(() => {
     onOk()
   }).onCancel(() => {

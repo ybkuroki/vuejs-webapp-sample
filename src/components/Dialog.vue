@@ -4,8 +4,8 @@ import { useDialogPluginComponent } from 'quasar'
 const props = defineProps({
   title: { type: String, required: true },
   message: { type: String, required: true },
-  cancel: Boolean,
-  persistent: Boolean
+  cancel: { type: Boolean, defalut: false },
+  persistent: { type: Boolean, defalut: false },
 })
 
 defineEmits([
@@ -24,7 +24,7 @@ const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } = useDialogPluginC
 </script>
 
 <template>
-  <q-dialog ref="dialogRef" @hide="onDialogHide">
+  <q-dialog ref="dialogRef" @hide="onDialogHide" :persistent="persistent">
     <q-card class="q-dialog-plugin">
       <q-card-section>
         <div class="text-indigo text-h6">{{ title }}</div>
