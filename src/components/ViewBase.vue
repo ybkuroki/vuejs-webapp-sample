@@ -64,7 +64,7 @@ setStore()
     <q-drawer class="bg-indigo-5" v-model="leftDrawerOpen" bordered>
       <q-scroll-area class="fit">
         <q-list>
-          <q-item clickable class="text-white" active-class="bg-indigo-8" v-ripple @click="$router.push('/home')">
+          <q-item clickable class="text-white" active-class="bg-indigo-8" v-ripple to="/home" exact>
             <q-item-section avatar>
               <q-icon name="home" />
             </q-item-section>
@@ -82,7 +82,7 @@ setStore()
             </q-item-section>
           </q-item>
           <q-separator />
-          <q-item clickable class="text-white" active-class="bg-indigo-8" v-ripple @click="$router.push('/about')">
+          <q-item clickable class="text-white" active-class="bg-indigo-8" v-ripple to="/about" exact>
             <q-item-section avatar>
               <q-icon name="info" />
             </q-item-section>
