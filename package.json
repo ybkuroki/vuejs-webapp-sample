@@ -12,7 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@quasar/extras": "^1.16.4",
+    "@quasar/extras": "^1.16.5",
     "axios": "^1.4.0",
     "pinia": "^2.1.6",
     "quasar": "^2.12.0",
