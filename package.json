@@ -23,7 +23,7 @@
     "@quasar/vite-plugin": "^1.5.0",
     "@rushstack/eslint-patch": "^1.4.0",
     "@tsconfig/node18": "^18.2.2",
-    "@types/node": "^20.6.3",
+    "@types/node": "^20.7.1",
     "@vitejs/plugin-vue": "^4.3.4",
     "@vue/eslint-config-prettier": "^8.0.0",
     "@vue/eslint-config-typescript": "^12.0.0",
