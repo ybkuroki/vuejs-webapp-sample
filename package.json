@@ -16,7 +16,7 @@
     "axios": "^1.6.2",
     "pinia": "^2.1.7",
     "quasar": "^2.14.0",
-    "vue": "^3.3.8",
+    "vue": "^3.4.3",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
